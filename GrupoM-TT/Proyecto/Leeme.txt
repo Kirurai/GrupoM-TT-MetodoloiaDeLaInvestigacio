@@ -2,3 +2,10 @@ Alumnos:
 De Filippi Bruno
 Henriquez Agustín
 Miño Maurizio
+
+Tema Propuesto:
+
+
+Herramientas propuestas:
+  Lenguaje: Python
+  Entorno: Pycharm
