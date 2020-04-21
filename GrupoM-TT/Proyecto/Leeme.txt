@@ -4,7 +4,30 @@ Henriquez Agustín
 Miño Maurizio
 
 Tema Propuesto:
+Simulador de brote/contagios de pandemia.
 
+Nuestra propuesta es realizar un simulador gráfico de pandemia.
+
+Características principales:
++ Mostrar en tiempo real una animación de una muestra gráfica de individuos y como avanza el contagio del virus en la misma.
++ Mostrar un gráfico estadístico durante el tiempo.
++ Contar con un filtro para modificar variables y así poder generar nuevos casos de estudio.
++ Permitir el guardado de simulaciones anteriores para poder realizar comparaciones.
+
+El programa utilizaría una serie de cálculos matemáticos y variables para simular cada una de las situaciones de contagio,
+entre las cuales podríamos contar con variables como:
++ Tamaño de la muestra
++ Velocidad de movimiento de cada persona
++ Rango de infección del virus
++ Tiempo de recuperación del virus
++ Taza de mortalidad
++ Variables especiales como lo serían el distanciamiento social y la cuarentena
+
+Inicialmente el programa va a basarse en un modelo SIR, lo que significa que la población se reparte en tres categorías:
++ Susceptibles: Aquellos que son susceptibles a contraer una enfermedad (S)
++ Infecciosos: Aquellos que se encuentran actualmente contagiados (I)
++ Recuperados o Removidos: Aquellos que se han recuperado o han fallecido por la enfermedad, por lo tanto no son considerados
+un factor nuevo de contagio. (R)
 
 Herramientas propuestas:
   Lenguaje: Python
