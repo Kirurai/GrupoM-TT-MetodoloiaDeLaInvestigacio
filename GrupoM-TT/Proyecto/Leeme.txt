@@ -8,4 +8,4 @@ Tema Propuesto:
 
 Herramientas propuestas:
   Lenguaje: Python
-  
+  Entorno: Pycharm
