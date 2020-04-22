@@ -1,9 +1,9 @@
-**Alumnos:**
+Alumnos:
 De Filippi Bruno
 Henriquez Agustín
 Miño Maurizio
 
-**Tema Propuesto:**
+Tema Propuesto:
 Simulador de brote/contagios de pandemia.
 
 Nuestra propuesta es realizar un simulador gráfico de pandemia.
@@ -29,6 +29,6 @@ Inicialmente el programa va a basarse en un modelo SIR, lo que significa que la 
 + Recuperados o Removidos: Aquellos que se han recuperado o han fallecido por la enfermedad, por lo tanto no son considerados
 un factor nuevo de contagio. (R)
 
-**Herramientas propuestas:**
+Herramientas propuestas:
   Lenguaje: Python
   Entorno: Pycharm
