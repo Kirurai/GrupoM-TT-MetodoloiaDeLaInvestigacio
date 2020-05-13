@@ -1,12 +1,42 @@
+def ordenarMayorMenor(num): #recibe un numero, devuelve el numero con las cifras ordenadas de mayor a menor
+
+    unidad = int(num) % 10
+    decena = int(num / 10) % 10
+    centena = int(num / 100) % 10
+    unidadmil = int(num / 1000)
+
+    numeroAOrdenar = [unidad, decena, centena, unidadmil]
+    menorAMayor = sorted(numeroAOrdenar)
+    mayorAMenor = menorAMayor[::-1]
+    numeroOrdenado = str(mayorAMenor[0]) + str(mayorAMenor[1]) + str(mayorAMenor[2]) + str(mayorAMenor[3])
+
+    return numeroOrdenado
+
+
+def ordenarMenorMayor(num): #funcion que recibe un numero y ordena sus cifras de mayor a menor, retorna el numero ordenado
+
+    unidad = int(num) % 10
+    decena = int(num / 10) % 10
+    centena = int(num / 100) % 10
+    unidadmil = int(num / 1000)
+
+    numeroAOrdenar = [unidad, decena, centena, unidadmil]
+    menorAMayor = sorted(numeroAOrdenar)
+    numeroOrdenado = str(menorAMayor[0]) + str(menorAMayor[1]) + str(menorAMayor[2]) + str(menorAMayor[3])
+
+    return numeroOrdenado
+
 def  rutinaKaprekar(casos, vectorNum):  #funcion para ejecutar la rutina de Kaprekar
 
-    for x in vectorNum:
-        unidad = x % 10
-        decena = int(x / 10) % 10
-        centena = int(x / 100) % 10
-        unidadmil = int(x / 1000)
+    CONSTANTE_KAPREKAR = 6174
 
-        numMayor =
+    for x in vectorNum:
+
+
+        numeroParaOrdenar = x
+
+
+
 
 
 
