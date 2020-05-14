@@ -24,7 +24,6 @@ while (numero != "6174") and (k < 8):
     sorted(descendente, reverse=True)
 
     k += 1
-    flag = []
     numero = (abs(int("".join(ascendente)) - int("".join(descendente))))
     print(numero)
 
