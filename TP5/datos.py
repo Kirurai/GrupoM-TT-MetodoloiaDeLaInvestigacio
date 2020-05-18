@@ -1,8 +1,10 @@
 def pedirCantidadNumeros():
+    """Devuelve un entero positivo pedido por teclado"""
     while True:
         cantidadIngresada = input("Ingrese la cantidad de numeros a los que desee comprobar: ")
         if esCantidadValida(cantidadIngresada):
             break
+
     return int(cantidadIngresada)
 
 
@@ -18,15 +20,18 @@ def esCantidadValida(cantidad):
         return False
 
 
-def pedirListaNumeros(cantidad):
+def pedirListaNumeros(tamaño):
+    """Devuelve una lista de números enteros positivos de 4 dígitos máximo ingresados por teclado"""
     listaNumeros = []
-    for x in range(cantidad):
+    for x in range(tamaño):
         print("--------Número #{}--------".format(x+1))
         listaNumeros.append(pedirNumero())
+
     return listaNumeros
 
 
 def pedirNumero():
+    """Devuelve un entero positivo ingresado por teclado"""
     while True:
         numero = input("Ingrese un número positivo de 4 dígitos máximo:")
         if esNumeroValido(numero):

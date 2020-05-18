@@ -1,8 +1,12 @@
-def ordenarAscendente(numero):
-    ascendente = "".join(sorted(numero))    # genera una lista con todos los caracteres que forman el número ordenados en forma ascendente y los concatena en un str.
+def ordenar_ascendente(numero):
+    """Devuelve un numero entero, ingresado por parámetro, con dígitos ordenados ascendentemente"""
+    ascendente = "".join(sorted(str(numero)))
+
     return int(ascendente)
 
 
-def ordenarDescendente(numero):
-    descendente = "".join(sorted(numero, reverse=True))     # genera una lista con todos los caracteres que forman el número ordenados en forma descendente y los concatena en un str.
+def ordenar_descendente(numero):
+    """Devuelve un numero entero, ingresado por parámetro, con dígitos ordenados descendentemente"""
+    descendente = "".join(sorted(str(numero), reverse=True))
+
     return int(descendente)
