@@ -1,0 +1,18 @@
+El modelo SIR divide la poblacion en 3 clases
+S: Susceptibles
+I: Infectados
+R: Recuperados o Removidos
+
+Según la teoría, las fórmulas son las siguientes:
+
+S(t+Δt) = S(t) - β*S*I*Δt
+I(t+Δt) = I(t) + β*S*I*Δt - μ*I*Δt
+R(t+Δt) = R(t) + μ*I*Δt
+
+Si despejamos los terminos dependientes de t y dividimos por Δt, obtenemos 3 derivadas
+
+S'(t) = - β*S*I
+I'(t) = β*S*I - μ*I
+R'(t) = μ*I
+
+Con estas derivadas podemos realizar los cálculos pertinentes para el modelo
