@@ -62,7 +62,7 @@ def animar(i):
 ani = FuncAnimation(plt.gcf(),
                     animar,
                     #velocidad de actualizacion del grafico
-                    interval=50,
+                    interval=100,
                     #cantidad de frames que dura la actualizacion del grafico, no es necesario, pero
                     # sino sigue reproduciendose por lo que no se puede hacer zoom, consume recursos y si intentas
                     # mover la ventana se lagguea horrendamente

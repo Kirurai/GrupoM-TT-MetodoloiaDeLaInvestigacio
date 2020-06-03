@@ -2,21 +2,29 @@ import numpy as np
 from CalculadoraDiferenciales import Euler
 import csv
 import time
+from datetime import datetime
 
+'''
+S'(t) = - beta*S*I
+I'(t) = beta*S*I - mu*I
+R'(t) = mu*I
+'''
 
-# S'(t) = - beta*S*I
-# I'(t) = beta*S*I - mu*I
-# R'(t) = mu*I
 
 class SIR:
 
     def __init__(self, mu, beta, S0, I0, R0):
 
-        #mu y beta son parametros de las diferenciales
-        #mu es la probabilidad de un infectado de ser removido
-        #beta es la probabilidad de infectar a un susceptible
-        #S0, I0, R0 son los valores iniciales
+        """
 
+        :param mu: parametro de la diferencial, probabilidad de ser removido
+        :param beta: parametro de la diferencial, probabilidad de infectar a un susceptible
+        :param S0: valor de susceptibles inicial
+        :param I0: valor de infectados inicial
+        :param R0: valor de removidos inicial
+        """
+
+        # ambos is instance nos permiten variar valores de beta y mu en funcion del tiempo
         if isinstance(mu, (float, int)):
 
             #es numero?
@@ -54,14 +62,26 @@ class SIR:
 if __name__ == "__main__":
 
     #SOLUCION MODELO SIR
+
     # probabilidad de ser removido (cura) de 0.0 a 20.0, valores mas altos hacen graficos divertidos y rompen el programa
-    mu = 0.1
+    # dejar comentado
+    #mu = 0.1
+
+    #SI APARECE UNA CURA E INCREMENTAN LAS POSIBILIDADES DE CURARSE (O SE INCREMENTA LA TASA DE MORTALIDAD)
+    mu_inicial = 0.1
+    mu_final = 0.1
+    mu_dias_cambio = 30
+    mu = lambda t: mu_inicial if t <= mu_dias_cambio else mu_final
 
     # probabilidad de ser infectado (tasa de infeccion) de 0.0 a 0.01, valores mas grandes producen demasiados extremos
-    # beta = 0.001
+    # dejar comentado
+    #beta = 0.001
 
-    # QUE PASA SI LA TASA DE INFECCION DISMINUYE CON EL TIEMPO DEBIDO A MEDIDAS PREVENTIVAS? (comentar el beta de arriba)
-    beta = lambda t: 0.001 if t <= 5 else 0.000001
+    # QUE PASA SI LA TASA DE INFECCION DISMINUYE CON EL TIEMPO DEBIDO A MEDIDAS PREVENTIVAS?
+    beta_inicial = 0.00001
+    beta_final = 0.00001
+    beta_dias_cambio = 10
+    beta = lambda t: beta_inicial if t <= beta_dias_cambio else beta_final
     # en este caso decimos que a partir de los 10 dias se comienzan a aplicar medidas preventivas
 
     # poblacion susceptible inicial
@@ -117,13 +137,21 @@ if __name__ == "__main__":
             # creamos un dictionary writer
             csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-            # escribimos el valor de cada columna
+            ''' 
+            escribimos el valor de cada columna, los valores SIR están redondeados, ya que al ser una integral, los 
+            valores generados poseen muchos decimales, lo cual sería incorrecto para nuestro modelo, ya que no podemos
+            tener, por ejemplo, 20,324261212 pesonas infectadas.
+            '''
             info = {
                 "tiempo": tiempo,
-                "S": sg,
-                "I": ig,
-                "R": rg
+                "S": round(sg, 0),
+                "I": round(ig, 0),
+                "R": round(rg, 0)
             }
+
+            #registramos los datos finales del experimento
+            if (i==saltos-2):
+                datos = info
 
             # lo escribimos en cada columna
             csv_writer.writerow(info)
@@ -138,6 +166,45 @@ if __name__ == "__main__":
             ig = u[i, 1]
             rg = u[i, 2]
 
-        time.sleep(0.05)    #tocar para actualizar datos más rápido
+        # tocar para actualizar datos más rápido
+        time.sleep(0)
 
+    #almacenamos las variables del modelo en un diccionario
+    variables_del_modelo = {
+        "fecha_del_experimento": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "mu_inicial": mu_inicial,
+        "mu_final": mu_final,
+        "mu_dias_cambio": mu_dias_cambio,
+        "beta_inicial": beta_inicial,
+        "beta_final": beta_final,
+        "beta_dias_cambio": beta_dias_cambio,
+        "S0": s0,
+        "I0": i0,
+        "R0": r0
+    }
+
+    #unimos los diccionarios de variables y datos para obtener un diccionario de resultados del experimento actual
+    resultados = {**variables_del_modelo, **datos}
+
+    #registramos los datos del experimento actual en un csv donde se encuentra el histórico de los experimentos
+    with open(r'Experimentos.csv', 'a', newline='') as csvfile:
+
+        fieldnames = ["fecha_del_experimento",
+                      "mu_inicial",
+                      "mu_final",
+                      "mu_dias_cambio",
+                      "beta_inicial",
+                      "beta_final",
+                      "beta_dias_cambio",
+                      "S0",
+                      "I0",
+                      "R0",
+                      "tiempo",
+                      "S",
+                      "I",
+                      "R"]
+
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writerow(resultados)
 
