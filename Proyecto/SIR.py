@@ -78,8 +78,8 @@ if __name__ == "__main__":
     #beta = 0.001
 
     # QUE PASA SI LA TASA DE INFECCION DISMINUYE CON EL TIEMPO DEBIDO A MEDIDAS PREVENTIVAS?
-    beta_inicial = 0.00001
-    beta_final = 0.00001
+    beta_inicial = 0.001
+    beta_final = 0.001
     beta_dias_cambio = 10
     beta = lambda t: beta_inicial if t <= beta_dias_cambio else beta_final
     # en este caso decimos que a partir de los 10 dias se comienzan a aplicar medidas preventivas
