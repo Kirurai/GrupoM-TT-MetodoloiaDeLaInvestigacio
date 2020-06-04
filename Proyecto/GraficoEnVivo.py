@@ -56,6 +56,33 @@ def animar(i):
     #gráficos ni errores, es una buena práctica incluírlo
     plt.tight_layout()
 
+    #Con esto rellenamos el area entre los gráficos, para este gráfico vamos a rellenar el área entre los infectados
+    #y los susceptibles, en caso que los susceptibles sean más que los infectados, la zona va a ser azul, de lo
+    #contrario va a ser roja
+
+    plt.fill_between(t,  # eje x
+                     s,  # eje y
+                     i,  # es el segundo eje y
+                     where=(s > i),  # esto determina desde donde hasta donde se hace el relleno
+                     interpolate=True,
+                     # esto evita q ciertas intersecciones se cruzen, y que todas las regiones se rellenen correctamente
+                     alpha=0.25,
+                     color="blue",
+                     label="Mayoría de población sana")  # alpha nos permite hacer transparente el relleno
+
+    plt.fill_between(t,  # eje x
+                     s,  # eje y
+                     i,  # es el segundo eje y
+                     where=(s <= i),  # esto determina desde donde hasta donde se hace el relleno
+                     interpolate=True,
+                     # esto evita q ciertas intersecciones se cruzen, y que todas las regiones se rellenen correctamente
+                     alpha=0.25,
+                     color="red",
+                     label="Mayoría de población infectada")  # alpha nos permite hacer transparente el relleno
+
+
+    plt.legend()
+
 # GRAFICO
 
 
