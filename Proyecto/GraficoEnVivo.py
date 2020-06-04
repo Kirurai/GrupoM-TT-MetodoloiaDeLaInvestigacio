@@ -62,11 +62,11 @@ def animar(i):
 ani = FuncAnimation(plt.gcf(),
                     animar,
                     #velocidad de actualizacion del grafico
-                    interval=100,
+                    interval=10,
                     #cantidad de frames que dura la actualizacion del grafico, no es necesario, pero
                     # sino sigue reproduciendose por lo que no se puede hacer zoom, consume recursos y si intentas
                     # mover la ventana se lagguea horrendamente
-                    #frames=100,
+                    frames=100,
                     repeat=False)
 
 #volvemos a llamar a tight layout solo por si acaso

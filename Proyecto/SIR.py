@@ -171,7 +171,7 @@ if __name__ == "__main__":
             rg = u[i, 2]
 
         # tocar para actualizar datos más rápido
-        time.sleep(0)
+        time.sleep(0.01)
 
     #almacenamos las variables del modelo en un diccionario
     variables_del_modelo = {
