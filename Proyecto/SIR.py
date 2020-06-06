@@ -59,7 +59,33 @@ class SIR:
             self.mu(t)*I
         ])
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+
+def modeloSIR(  mu_inicial,
+                mu_final,
+                mu_dias_cambio,
+                beta_inicial,
+                beta_final,
+                beta_dias_cambio,
+                s0,
+                i0,
+                r0,
+                dias
+                ):
+
+    """
+    :param mu_inicial: posibilidad incicial de curarse
+    :param mu_final: posibilidad final de curarse
+    :param mu_dias_cambio: dias para que se produzca el cambio de mu
+    :param beta_inicial: posibilidad inicial de infectarse
+    :param beta_final: posibilidad final de infectarse
+    :param beta_dias_cambio: dias para que se produzca el cambio de beta
+    :param s0: numero de susceptibles inicial
+    :param i0: numero de infectados inicial
+    :param r0: numero de removidos inicial
+    :param dias: numero de dias del experimento
+    :return:
+    """
 
     #SOLUCION MODELO SIR
 
@@ -68,9 +94,9 @@ if __name__ == "__main__":
     #mu = 0.1
 
     #SI APARECE UNA CURA E INCREMENTAN LAS POSIBILIDADES DE CURARSE (O SE INCREMENTA LA TASA DE MORTALIDAD)
-    mu_inicial = 0.1
-    mu_final = 0.1
-    mu_dias_cambio = 30
+    # mu_inicial = 0.1
+    # mu_final = 0.1
+    # mu_dias_cambio = 30
     mu = lambda t: mu_inicial if t <= mu_dias_cambio else mu_final
 
     # probabilidad de ser infectado (tasa de infeccion) de 0.0 a 0.01, valores mas grandes producen demasiados extremos
@@ -78,9 +104,9 @@ if __name__ == "__main__":
     #beta = 0.001
 
     # QUE PASA SI LA TASA DE INFECCION DISMINUYE CON EL TIEMPO DEBIDO A MEDIDAS PREVENTIVAS?
-    beta_inicial = 0.00001
-    beta_final = 0.001
-    beta_dias_cambio = 10
+    # beta_inicial = 0.00001
+    # beta_final = 0.001
+    # beta_dias_cambio = 10
     beta = lambda t: beta_inicial if t <= beta_dias_cambio else beta_final
     # en este caso decimos que a partir de los 10 dias se comienzan a aplicar medidas preventivas
 
@@ -89,13 +115,13 @@ if __name__ == "__main__":
     '''
 
     # poblacion susceptible inicial
-    s0 = 3000
+    # s0 = 3000
 
     # poblacion infectada inicial
-    i0 = 1
+    # i0 = 1
 
     # poblacion recuperada inicial
-    r0 = 0
+    # r0 = 0
 
     #seteo inicial
     sir = SIR(mu, beta, s0, i0, r0)
@@ -106,7 +132,7 @@ if __name__ == "__main__":
     saltos = 1001
 
     # dias totales
-    dias = 60
+    # dias = 60
 
     # Saltos de 0 a 60 dias
     saltos_de_tiempo = np.linspace(0, dias, saltos)
