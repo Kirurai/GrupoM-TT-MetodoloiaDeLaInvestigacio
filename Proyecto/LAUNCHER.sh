@@ -1,2 +1,2 @@
 python SIR.py &
-python GraficoEnVivo.py &
+python GUI.py &

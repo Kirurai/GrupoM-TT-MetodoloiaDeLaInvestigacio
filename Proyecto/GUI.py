@@ -1,14 +1,28 @@
-import pandas as pd
+#import serial
+from tkinter import *
 from matplotlib import pyplot as plt
 import matplotlib.animation as animation
-from matplotlib.animation import FuncAnimation
-
-#podemos definir diferentes estilos de gráficos, se pueden ver todos en este link
-# https://matplotlib.org/3.2.1/gallery/style_sheets/style_sheets_reference.html
-plt.style.use("fivethirtyeight")
+from matplotlib import style
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import pandas as pd
 
 
-def animar(i):
+root = Tk()
+root.geometry('1000x400')
+root.title('This is my root window')
+#root.state('zoomed')
+root.config(background='#fafafa')
+
+xar = []
+yar = []
+
+style.use('ggplot')
+fig = plt.figure(figsize=(10, 3.2), dpi=100)
+ax1 = fig.add_subplot(1, 1, 1)
+ax1.set_ylim(0, 100)
+line, = ax1.plot(xar, yar, 'r', marker='o')
+
+def animar(j):
 
     #csv del cual leer los datos
     data = pd.read_csv('ValoresExperimento.csv')
@@ -69,21 +83,9 @@ def animar(i):
 
     plt.legend()
 
-# GRAFICO
 
+plotcanvas = FigureCanvasTkAgg(fig, root)
+plotcanvas.get_tk_widget().grid(column=1, row=1)
+ani = animation.FuncAnimation(fig, animar, interval=10, blit=False)
 
-ani = FuncAnimation(plt.gcf(),
-                    animar,
-                    #velocidad de actualizacion del grafico
-                    interval=10,
-                    #cantidad de frames que dura la actualizacion del grafico, no es necesario, pero
-                    # sino sigue reproduciendose por lo que no se puede hacer zoom, consume recursos y si intentas
-                    # mover la ventana se lagguea horrendamente
-                    frames=100,
-                    repeat=False)
-
-#volvemos a llamar a tight layout solo por si acaso
-plt.tight_layout()
-
-#mostramos el gráfico
-plt.show()
+root.mainloop()
