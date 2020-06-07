@@ -120,10 +120,10 @@ class EditarParametros(tk.Frame):
 
 
         button3 = ttk.Button(self, text = "Valores por defecto",
-                             command= lambda: valoresDefecto(self, sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial,sbBetaFinal,sbBetaDiasDeCambio, sbS, sbI, sbR))
+                             command= lambda: valoresDefecto(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial,sbBetaFinal,sbBetaDiasDeCambio, sbS, sbI, sbR))
         button3.pack()
 
-def valoresDefecto(self, sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI, sbR):
+def valoresDefecto(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI, sbR):
     sbMuInicial.set(0.1)
     sbMuFinal.set(0.1)
     sbMuDiasDeCambio.set(30)
