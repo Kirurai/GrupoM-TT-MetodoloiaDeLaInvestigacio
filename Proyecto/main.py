@@ -120,15 +120,19 @@ class EditarParametros(tk.Frame):
 
 
         button3 = ttk.Button(self, text = "Valores por defecto",
-                             command= lambda: spinboxMuInicial.set(0.1))
+                             command= lambda: valoresDefecto(self, sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial,sbBetaFinal,sbBetaDiasDeCambio, sbS, sbI, sbR))
         button3.pack()
 
-
-
-
-
-
-
+def valoresDefecto(self, sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI, sbR):
+    sbMuInicial.set(0.1)
+    sbMuFinal.set(0.1)
+    sbMuDiasDeCambio.set(30)
+    sbBetaInicial.set(0.00001)
+    sbBetaFinal.set(0.001)
+    sbBetaDiasDeCambio.set(10)
+    sbS.set(3000)
+    sbI.set(1)
+    sbR.set(0)
 
 app = VentanaPrincipal()
 app.mainloop()
