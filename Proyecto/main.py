@@ -136,19 +136,3 @@ def valoresDefecto(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBe
 
 app = VentanaPrincipal()
 app.mainloop()
-
-
-
-#modeloSIR(0.1, 0.1, 30, 0.00001, 0.001, 10, 3000, 1, 0, 60) #Utiliza los valores iniciales
-#modeloSIR(mu_inicial, mu_final, mu_dias_cambio, beta_inicial, beta_final, beta_dias_cambio, s0, i0, r0, dias )
-# mu_inicial = 0.1
-# mu_final = 0.1
-# mu_dias_cambio = 30
-# beta_inicial = 0.00001
-# beta_final = 0.001
-# beta_dias_cambio = 10
-######Poblaciones iniciales
-# s0 = 3000
-# i0 = 1
-# r0 = 0
-# dias = 60
