@@ -59,7 +59,6 @@ class SIR:
             self.mu(t)*I
         ])
 
-# if __name__ == "__main__":
 
 def modeloSIR(  mu_inicial,
                 mu_final,
@@ -167,11 +166,13 @@ def modeloSIR(  mu_inicial,
             # creamos un dictionary writer
             csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-            ''' 
-            escribimos el valor de cada columna, los valores SIR están redondeados, ya que al ser una integral, los 
-            valores generados poseen muchos decimales, lo cual sería incorrecto para nuestro modelo, ya que no podemos
-            tener, por ejemplo, 20,324261212 pesonas infectadas.
-            '''
+
+            # escribimos el valor de cada columna, los valores SIR están redondeados, ya que al ser una integral, los
+            # valores generados poseen muchos decimales, lo cual sería incorrecto para nuestro modelo, ya que no podemos
+            # tener, por ejemplo, 20,324261212 pesonas infectadas.
+            # el unico "defecto" de esto se produce si la población es muy pequeña, el grafico va a los saltos, pero
+            # aunque se vea "feo" el gráfico es correcto...
+
             info = {
                 "tiempo": tiempo,
                 "S": round(sg, 0),
@@ -196,7 +197,7 @@ def modeloSIR(  mu_inicial,
             ig = u[i, 1]
             rg = u[i, 2]
 
-        # tocar para actualizar datos más rápido
+        # tocar para actualizar datos más rápido (OBSOLETO)
         #time.sleep(0.01)
 
     #almacenamos las variables del modelo en un diccionario
