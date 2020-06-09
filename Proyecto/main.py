@@ -23,6 +23,7 @@ class VentanaPrincipal(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)
 
         tk.Tk.wm_title(self, "Proyecto Grupo M - TT")
+        self.iconphoto(True, tk.PhotoImage(file='imagenes/SIR.png'))
 
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
