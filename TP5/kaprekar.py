@@ -1,33 +1,39 @@
-from ordenar import ordenar_ascendente, ordenar_descendente
+while True: #Se pide el ingreso y que el mismo sea válido para utilizar a futuro
+    cantidad = input("Ingrese la cantidad de números que quiere ingresar: ")
+    if cantidad.isdigit() and (int(cantidad) > 0):
+        break
+    print("El valor ingresado es invalido. Vuelva a intentarlo")
 
-CONSTANTE_KAPREKAR = 6174
+respuestas = [] #Inicialización del array de respuestas. 
+for x in range(0, int(cantidad)): #Se se pedira un número y se realizará la rutina de Kaprekar las veces que se ha dicho anteriormente
 
-
-def calcular_cantidad_vueltas(numero):
-    """Devuelve un entero, la cantidad de ciclos de la rutina de Kaprekar para llegar a la constante
-
-    Toma un entero por parametro, le aplica la rutina de Kaprekar y devuelve la cantidad de ciclos necesarios para
-    llegar a la constante de Kaprekar(6174), un entero de 0 a 8.
-    """
-    operador = numero
-    for ciclo in range(7):                      # Cantidad máxima de iteraciones para llegar a la constante de Kaprekar
-        if operador == CONSTANTE_KAPREKAR:
-            return ciclo
-
-        operador = rutina_kaprekar(operador)
-    else:                                       # En caso de números con todas sus cifras iguales
-        return 8
+    while True: #Ingreso del número de 4 digitos, no puede ser mayor, y deben ser números
+        numero = input("Ingrese un numero natural de hasta 4 digitos, con al menos uno diferente: ")
+        if (numero.isdigit()) and (len(numero) <= 4) and """(int(numero) % 1111 != 0)""":
+            break
+        print("Ha ingresado un número invalido. Por favor vu2elta a intentarlo")
 
 
-def rutina_kaprekar(numero):
-    """Devuelve un entero luego de aplicar un ciclo de la rutina de Kaprekar
+    for i in range(0,9): #Se realizará la rutina un total de 8 veces (en la octava, entra en el siguiente if y sale del programa) ya que por definición 7 es el máxim para llegar a dicha constante
+        if (numero == "6174") or (i == 8): #Se empieza comprobando si el número es la constante o es la octava itearación
+            respuestas.append(i)            #en el caso de que se ingrese el número efectivamente, ingresará 0 como respuesta
+            break
+            
+        while len(numero) != 4: #Completa el número ingresado por si tiene menos de 4 digitos. i.e ingresó "34" lo completa como "3400". 
+            numero += "0"           #Donde complete los ceros, es irrelevante
+        #Creando listas donde estarán los dígitos de manera ascendentes y descendentes
+        ascendente = []
+        descendente = [] 
+        for j in range(0, 4):
+            ascendente.append(numero[j])
+            descendente.append(numero[j])
 
-    Toma un entero por parámetro, lo transforma en str para ordenar sus dígitos, devuelve la resta de los numeros
-    ordenados.
-    """
-    digitos = "{:04d}".format(numero)           # Para compensar la falta de dígitos
+        #Se ordenan los digitos de las listas
+        ascendente = sorted(ascendente)
+        descendente = sorted(descendente, reverse=True)
+        #Se unen las componentes de los array y se transforman en int, para realizar la resta y volver al tipo original
+        numero = str((abs(int("".join(ascendente)) - int("".join(descendente)))))
 
-    menor = ordenar_ascendente(digitos)
-    mayor = ordenar_descendente(digitos)
-
-    return mayor - menor
+#Se imprimen las respuestas por consola
+for x in range(0, len(respuestas)): 
+    print(respuestas[x])
