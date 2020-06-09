@@ -88,22 +88,22 @@ class EditarParametros(tk.Frame):
 
         labelS = tk.Label(labelframe, text="Suceptibles", font=SMALL_FONT)
         labelS.grid(column=1, row=4, padx=20, pady=10)
-        sbS = ttk.Spinbox(labelframe, from_=1, to=20000, increment=10, width=10, state='readonly')
+        sbS = ttk.Spinbox(labelframe, from_=1, to=10000, increment=10, width=10, state='readonly')
         sbS.set(3000)
         sbS.grid(column=1, row=5, padx=20, pady=10)
 
         labelI = tk.Label(labelframe, text="Infectados", font=SMALL_FONT)
         labelI.grid(column=2, row=4, padx=20, pady=10)
-        sbI = ttk.Spinbox(labelframe, from_=1, to=20000, increment=1, width=10, state='readonly')
+        sbI = ttk.Spinbox(labelframe, from_=1, to=10000, increment=1, width=10, state='readonly')
         sbI.set(1)
         sbI.grid(column=2, row=5, padx=20, pady=10)
-
+        ''' #Quitados los recuperados, para darl emás jeugo a los otros dos
         labelR = tk.Label(labelframe, text="Recuperados", font=SMALL_FONT)
         labelR.grid(column=3, row=4, padx=20, pady=10)
         sbR = ttk.Spinbox(labelframe, from_=0, to=20000, increment=1, width=10, state='readonly')
         sbR.set(0)
         sbR.grid(column=3, row=5, padx=20, pady=10)
-
+        '''
         button = ttk.Button(self, text="Cargar parametros",
                             command=lambda: modeloSIR(float(sbMuInicial.get()), float(sbMuFinal.get()),
                                                       float(sbMuDiasDeCambio.get()), float(sbBetaInicial.get()),
