@@ -34,9 +34,3 @@ un factor nuevo de contagio. (R)
 Herramientas propuestas:
   Lenguaje: Python
   Entorno: Pycharm
-
-------------------------------------------------------------------------------------------------------------------------
-MODO DE USO:
-Ejecutar GraficoEnVivo.py
-Ejecutar SIR.py
-Disfrutar del espectáculo
