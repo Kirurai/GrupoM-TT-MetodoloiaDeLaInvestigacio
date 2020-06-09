@@ -8,7 +8,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from subprocess import Popen
-
+from tkinter.messagebox import showinfo
 
 from GraficoEnVivo import ejecutarGrafico
 from SIR import modeloSIR
@@ -59,7 +59,7 @@ class EditarParametros(tk.Frame):
         labelDiasDeCambio = tk.Label(labelframe, text="Dias de Cambio", font=SMALL_FONT)
         labelDiasDeCambio.grid(column=3, row=1, padx=20, pady=10)
 
-        labelmu = tk.Label(labelframe, text="Valor de mu", font=SMALL_FONT)
+        labelmu = tk.Label(labelframe, text="Probabilidad de Remoción", font=SMALL_FONT)
         labelmu.grid(column=0, row=2, padx=20, pady=10)
         sbMuInicial = ttk.Spinbox(labelframe, from_=0.001, to=20, increment=0.01, width=10, state='readonly')
         sbMuInicial.set(0.1)
@@ -67,11 +67,11 @@ class EditarParametros(tk.Frame):
         sbMuFinal = ttk.Spinbox(labelframe, from_=0.001, to=20, increment=0.01, width=10, state='readonly')
         sbMuFinal.set(0.1)
         sbMuFinal.grid(column=2, row=2, padx=20, pady=10)
-        sbMuDiasDeCambio = ttk.Spinbox(labelframe, from_=0, to=1000, increment=1, width=10, state='readonly')
+        sbMuDiasDeCambio = ttk.Spinbox(labelframe, from_=0, to=60, increment=1, width=10, state='readonly')
         sbMuDiasDeCambio.set(30)
         sbMuDiasDeCambio.grid(column=3, row=2, padx=20, pady=10)
 
-        labelBeta = tk.Label(labelframe, text="Valor de beta", font=SMALL_FONT)
+        labelBeta = tk.Label(labelframe, text="Probabilidad de Infección", font=SMALL_FONT)
         labelBeta.grid(column=0, row=3, padx=20, pady=10)
         sbBetaInicial = ttk.Spinbox(labelframe, from_=0.0001, to=0.01, increment=0.0001, width=10, state='readonly')
         sbBetaInicial.set(0.00001)
@@ -79,7 +79,7 @@ class EditarParametros(tk.Frame):
         sbBetaFinal = ttk.Spinbox(labelframe, from_=0.0001, to=0.01, increment=0.0001, width=10, state='readonly')
         sbBetaFinal.set(0.001)
         sbBetaFinal.grid(column=2, row=3, padx=20, pady=10)
-        sbBetaDiasDeCambio = ttk.Spinbox(labelframe, from_=0, to=1000, increment=1, width=10, state='readonly')
+        sbBetaDiasDeCambio = ttk.Spinbox(labelframe, from_=0, to=60, increment=1, width=10, state='readonly')
         sbBetaDiasDeCambio.set(10)
         sbBetaDiasDeCambio.grid(column=3, row=3, padx=20, pady=10)
 
@@ -105,11 +105,11 @@ class EditarParametros(tk.Frame):
         sbR.grid(column=3, row=5, padx=20, pady=10)
         '''
         button = ttk.Button(self, text="Cargar parametros",
-                            command=lambda: modeloSIR(float(sbMuInicial.get()), float(sbMuFinal.get()),
+                            command=lambda: cargarParametros(float(sbMuInicial.get()), float(sbMuFinal.get()),
                                                       float(sbMuDiasDeCambio.get()), float(sbBetaInicial.get()),
                                                       float(sbBetaFinal.get()), float(sbBetaDiasDeCambio.get()),
-                                                      float(sbS.get()), float(sbI.get()), 0, 60))
-        # command=lambda: modeloSIR(0.1, 0.1, 30, 0.00001, 0.001, 10, 3000, 1, 0, 60))
+                                                      float(sbS.get()), float(sbI.get())))
+
 
         button.pack()
 
@@ -123,8 +123,12 @@ class EditarParametros(tk.Frame):
         button3.pack()
 
         button4 = ttk.Button(self, text="Más detalles",
-                             command=lambda: abrir_csv())
+                             command=lambda: abrir_csv('ValoresExperimento.csv'))
         button4.pack()
+
+        button5 = ttk.Button(self, text="Histórico",
+                             command=lambda: abrir_csv('Experimentos.csv'))
+        button5.pack()
 
 def valoresDefecto(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI,
                    sbR):
@@ -138,9 +142,12 @@ def valoresDefecto(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBe
     sbI.set(1)
     #sbR.set(0)
 
-def abrir_csv():
-    p = Popen('ValoresExperimento.csv', shell=True)
+def abrir_csv(csv):
+    p = Popen(csv, shell=True)
 
+def cargarParametros(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI):
+    modeloSIR(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI, 0, 60)
+    showinfo("Exito!", "Parametros cargados!")
 
 app = VentanaPrincipal()
 app.mainloop()
