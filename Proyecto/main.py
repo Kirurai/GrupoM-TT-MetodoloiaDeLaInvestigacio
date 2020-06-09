@@ -61,7 +61,7 @@ class EditarParametros(tk.Frame):
 
         labelmu = tk.Label(labelframe, text="Valor de mu", font=SMALL_FONT)
         labelmu.grid(column=0, row=2, padx=20, pady=10)
-        sbMuInicial = ttk.Spinbox(labelframe, from_=0.001, to=20, increment=0.01, width=10, values='readonly')
+        sbMuInicial = ttk.Spinbox(labelframe, from_=0.001, to=20, increment=0.01, width=10, state='readonly')
         sbMuInicial.set(0.1)
         sbMuInicial.grid(column=1, row=2, padx=20, pady=10)
         sbMuFinal = ttk.Spinbox(labelframe, from_=0.001, to=20, increment=0.01, width=10, state='readonly')
@@ -108,7 +108,7 @@ class EditarParametros(tk.Frame):
                             command=lambda: modeloSIR(float(sbMuInicial.get()), float(sbMuFinal.get()),
                                                       float(sbMuDiasDeCambio.get()), float(sbBetaInicial.get()),
                                                       float(sbBetaFinal.get()), float(sbBetaDiasDeCambio.get()),
-                                                      float(sbS.get()), float(sbI.get()), float(sbR.get()), 60))
+                                                      float(sbS.get()), float(sbI.get()), 0, 60))
         # command=lambda: modeloSIR(0.1, 0.1, 30, 0.00001, 0.001, 10, 3000, 1, 0, 60))
 
         button.pack()
@@ -119,10 +119,10 @@ class EditarParametros(tk.Frame):
 
         button3 = ttk.Button(self, text="Valores por defecto",
                              command=lambda: valoresDefecto(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial,
-                                                            sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI, sbR))
+                                                            sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI, 0))
         button3.pack()
 
-        button4 = ttk.Button(self, text="Más detales",
+        button4 = ttk.Button(self, text="Más detalles",
                              command=lambda: abrir_csv())
         button4.pack()
 
@@ -136,7 +136,7 @@ def valoresDefecto(sbMuInicial, sbMuFinal, sbMuDiasDeCambio, sbBetaInicial, sbBe
     sbBetaDiasDeCambio.set(10)
     sbS.set(3000)
     sbI.set(1)
-    sbR.set(0)
+    #sbR.set(0)
 
 def abrir_csv():
     p = Popen('ValoresExperimento.csv', shell=True)
