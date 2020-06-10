@@ -62,10 +62,10 @@ class EditarParametros(tk.Frame):
 
         labelmu = tk.Label(labelframe, text="Probabilidad de Remoción", font=SMALL_FONT)
         labelmu.grid(column=0, row=2, padx=20, pady=10)
-        sbMuInicial = ttk.Spinbox(labelframe, from_=0.001, to=20, increment=0.01, width=10, state='readonly')
+        sbMuInicial = ttk.Spinbox(labelframe, from_=0.001, to=1, increment=0.01, width=10, state='readonly')
         sbMuInicial.set(0.1)
         sbMuInicial.grid(column=1, row=2, padx=20, pady=10)
-        sbMuFinal = ttk.Spinbox(labelframe, from_=0.001, to=20, increment=0.01, width=10, state='readonly')
+        sbMuFinal = ttk.Spinbox(labelframe, from_=0.001, to=1, increment=0.01, width=10, state='readonly')
         sbMuFinal.set(0.1)
         sbMuFinal.grid(column=2, row=2, padx=20, pady=10)
         sbMuDiasDeCambio = ttk.Spinbox(labelframe, from_=0, to=60, increment=1, width=10, state='readonly')
@@ -74,10 +74,10 @@ class EditarParametros(tk.Frame):
 
         labelBeta = tk.Label(labelframe, text="Probabilidad de Infección", font=SMALL_FONT)
         labelBeta.grid(column=0, row=3, padx=20, pady=10)
-        sbBetaInicial = ttk.Spinbox(labelframe, from_=0.0001, to=0.01, increment=0.0001, width=10, state='readonly')
+        sbBetaInicial = ttk.Spinbox(labelframe, from_=0.0001, to=0.001, increment=0.0001, width=10, state='readonly')
         sbBetaInicial.set(0.00001)
         sbBetaInicial.grid(column=1, row=3, padx=20, pady=10)
-        sbBetaFinal = ttk.Spinbox(labelframe, from_=0.0001, to=0.01, increment=0.0001, width=10, state='readonly')
+        sbBetaFinal = ttk.Spinbox(labelframe, from_=0.0001, to=0.001, increment=0.0001, width=10, state='readonly')
         sbBetaFinal.set(0.001)
         sbBetaFinal.grid(column=2, row=3, padx=20, pady=10)
         sbBetaDiasDeCambio = ttk.Spinbox(labelframe, from_=0, to=60, increment=1, width=10, state='readonly')
@@ -89,13 +89,13 @@ class EditarParametros(tk.Frame):
 
         labelS = tk.Label(labelframe, text="Suceptibles", font=SMALL_FONT)
         labelS.grid(column=1, row=4, padx=20, pady=10)
-        sbS = ttk.Spinbox(labelframe, from_=1, to=10000, increment=10, width=10, state='readonly')
+        sbS = ttk.Spinbox(labelframe, from_=1, to=15000, increment=10, width=10, state='readonly')
         sbS.set(3000)
         sbS.grid(column=1, row=5, padx=20, pady=10)
 
         labelI = tk.Label(labelframe, text="Infectados", font=SMALL_FONT)
         labelI.grid(column=2, row=4, padx=20, pady=10)
-        sbI = ttk.Spinbox(labelframe, from_=1, to=10000, increment=1, width=10, state='readonly')
+        sbI = ttk.Spinbox(labelframe, from_=1, to=1000, increment=1, width=10, state='readonly')
         sbI.set(1)
         sbI.grid(column=2, row=5, padx=20, pady=10)
         ''' #Quitados los recuperados, para darl emás jeugo a los otros dos
