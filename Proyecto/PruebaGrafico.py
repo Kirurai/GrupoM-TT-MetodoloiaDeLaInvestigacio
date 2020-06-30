@@ -28,11 +28,11 @@ def ejecutarGrafico():
         #limpia el gráfico en cada actualización para evitar errores gráficos
         plt.cla()
 
-        # if(j<len(sus) and j%10==0):
-        #     t.append(tie[j])
-        #     s.append(sus[j])
-        #     i.append(inf[j])
-        #     r.append(rec[j])
+        if(j<len(sus) and j%10==0):
+            t.append(tie[j])
+            s.append(sus[j])
+            i.append(inf[j])
+            r.append(rec[j])
 
         #creamos los plots de los gráficos
         plt.plot(t, s, label="Susceptibles")
