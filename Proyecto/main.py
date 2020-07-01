@@ -47,7 +47,7 @@ class EditarParametros(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Edición de parametros", font=LARGE_FONT)
+        label = tk.Label(self, text="Edicion de parametros", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
         # label.grid(column=1, row=0, padx=10, pady=10)
 
@@ -60,7 +60,7 @@ class EditarParametros(tk.Frame):
         labelDiasDeCambio = tk.Label(labelframe, text="Dias de Cambio", font=SMALL_FONT)
         labelDiasDeCambio.grid(column=3, row=1, padx=20, pady=10)
 
-        labelmu = tk.Label(labelframe, text="Probabilidad de Remoción", font=SMALL_FONT)
+        labelmu = tk.Label(labelframe, text="Probabilidad de Remocion", font=SMALL_FONT)
         labelmu.grid(column=0, row=2, padx=20, pady=10)
         sbMuInicial = ttk.Spinbox(labelframe, from_=0.001, to=1, increment=0.01, width=10, state='readonly')
         sbMuInicial.set(0.1)
@@ -72,7 +72,7 @@ class EditarParametros(tk.Frame):
         sbMuDiasDeCambio.set(30)
         sbMuDiasDeCambio.grid(column=3, row=2, padx=20, pady=10)
 
-        labelBeta = tk.Label(labelframe, text="Probabilidad de Infección", font=SMALL_FONT)
+        labelBeta = tk.Label(labelframe, text="Probabilidad de Infeccion", font=SMALL_FONT)
         labelBeta.grid(column=0, row=3, padx=20, pady=10)
         sbBetaInicial = ttk.Spinbox(labelframe, from_=0.0001, to=0.001, increment=0.0001, width=10, state='readonly')
         sbBetaInicial.set(0.00001)
@@ -98,7 +98,7 @@ class EditarParametros(tk.Frame):
         sbI = ttk.Spinbox(labelframe, from_=1, to=1000, increment=1, width=10, state='readonly')
         sbI.set(1)
         sbI.grid(column=2, row=5, padx=20, pady=10)
-        ''' #Quitados los recuperados, para darl emás jeugo a los otros dos
+        ''' #Quitados los recuperados, para darl emas jeugo a los otros dos
         labelR = tk.Label(labelframe, text="Recuperados", font=SMALL_FONT)
         labelR.grid(column=3, row=4, padx=20, pady=10)
         sbR = ttk.Spinbox(labelframe, from_=0, to=20000, increment=1, width=10, state='readonly')
@@ -123,11 +123,11 @@ class EditarParametros(tk.Frame):
                                                             sbBetaFinal, sbBetaDiasDeCambio, sbS, sbI, 0))
         button3.pack()
 
-        button4 = ttk.Button(self, text="Más detalles",
+        button4 = ttk.Button(self, text="Mas detalles",
                              command=lambda: abrir_csv('ValoresExperimento.csv'))
         button4.pack()
 
-        button5 = ttk.Button(self, text="Histórico",
+        button5 = ttk.Button(self, text="Historico",
                              command=lambda: abrir_csv('Experimentos.csv'))
         button5.pack()
 
